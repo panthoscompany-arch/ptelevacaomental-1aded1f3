@@ -60,8 +60,8 @@ import { ShieldCheck, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import VTurbPlayer from "@/components/VTurbPlayer";
 
-const VIEWERS_MIN = 480;
-const VIEWERS_MAX = 520;
+const VIEWERS_MIN = 90;
+const VIEWERS_MAX = 130;
 
 const SOCIAL_PROOF_MESSAGES = [
   "João Antunes de Belém adquiriu o protocolo Elevação Mental",
@@ -98,7 +98,7 @@ const Index = () => {
         setViewers((current) => {
           const delta = getRandomInt(1, 3) * (Math.random() > 0.5 ? 1 : -1);
           const next = current + delta;
-          return Math.max(VIEWERS_MIN - 50, Math.min(VIEWERS_MAX + 50, next));
+          return Math.max(VIEWERS_MIN - 20, Math.min(VIEWERS_MAX + 20, next));
         });
         scheduleNext();
       }, delay);
