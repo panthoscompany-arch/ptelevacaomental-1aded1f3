@@ -191,7 +191,7 @@ const Index = () => {
     (window as any).dataLayer = (window as any).dataLayer || [];
     (window as any).dataLayer.push({
       event: "cta_click",
-      cta_label: "QUERO ACESSO IMEDIATO",
+      cta_label: "QUERO CONHECER MEU NOVO EU",
       page: "protocolo_elevacao_mental",
     });
 
@@ -266,7 +266,7 @@ const Index = () => {
                   className="w-full animate-pulse text-base font-semibold md:text-lg"
                   onClick={handleCtaClick}
                 >
-                  QUERO ACESSO IMEDIATO
+                  Quero conhecer meu novo eu
                 </Button>
 
                 <div className="flex flex-col items-center justify-center gap-2 text-xs text-muted-foreground md:flex-row md:text-[0.7rem]">
