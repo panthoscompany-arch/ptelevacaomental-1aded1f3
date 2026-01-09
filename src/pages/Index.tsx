@@ -266,7 +266,6 @@ const Index = () => {
               <div className="space-y-3">
                 <Button
                   size="lg"
-                  variant="secondary"
                   className="w-full animate-pulse text-base font-semibold md:text-lg"
                   onClick={handleCtaClick}
                 >
