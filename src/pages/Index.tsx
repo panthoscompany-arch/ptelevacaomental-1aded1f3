@@ -244,11 +244,14 @@ const Index = () => {
           {/* Oferta atrasada */}
           {showOffer ? (
             <section className="mt-4 w-full max-w-xl space-y-4 rounded-xl border bg-card p-4 text-center shadow-sm">
-              {/* Link oculto da Hotmart para o widget de checkout */}
+              {/* Link oculto da Hotmart para o widget de checkout (não aparece visualmente) */}
               <a
                 ref={hotmartLinkRef}
                 href="https://pay.hotmart.com/D103519578K?checkoutMode=2"
-                className="hidden hotmart-fb hotmart__button-checkout"
+                className="hotmart-fb hotmart__button-checkout"
+                style={{ display: "none" }}
+                aria-hidden="true"
+                tabIndex={-1}
               >
                 Checkout Hotmart
               </a>
@@ -263,6 +266,7 @@ const Index = () => {
               <div className="space-y-3">
                 <Button
                   size="lg"
+                  variant="secondary"
                   className="w-full animate-pulse text-base font-semibold md:text-lg"
                   onClick={handleCtaClick}
                 >
