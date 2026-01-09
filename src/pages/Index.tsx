@@ -55,7 +55,7 @@
   As seções abaixo implementam a landing page em React.
 */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ShieldCheck, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import VTurbPlayer from "@/components/VTurbPlayer";
@@ -80,6 +80,7 @@ const Index = () => {
   const [showOffer, setShowOffer] = useState(false);
   const [toastIndex, setToastIndex] = useState(0);
   const [toastVisible, setToastVisible] = useState(false);
+  const toastIndexRef = useRef(0);
 
   const debugMode = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -127,19 +128,29 @@ const Index = () => {
     };
   }, [debugMode]);
 
-  // Social proof toasts
+  // Social proof toasts (cada nome aparece apenas uma vez)
   useEffect(() => {
     let showTimeoutId: number;
     let hideTimeoutId: number;
 
     const scheduleToast = () => {
+      // Se já mostramos todos os nomes, não agenda novos toasts
+      if (toastIndexRef.current >= SOCIAL_PROOF_MESSAGES.length) return;
+
       const delay = getRandomInt(15000, 45000);
       showTimeoutId = window.setTimeout(() => {
+        // Define qual mensagem será exibida agora
+        setToastIndex(toastIndexRef.current);
         setToastVisible(true);
+
         hideTimeoutId = window.setTimeout(() => {
           setToastVisible(false);
-          setToastIndex((prev) => (prev + 1) % SOCIAL_PROOF_MESSAGES.length);
-          scheduleToast();
+          toastIndexRef.current += 1;
+
+          // Agenda o próximo toast somente se ainda houver nomes disponíveis
+          if (toastIndexRef.current < SOCIAL_PROOF_MESSAGES.length) {
+            scheduleToast();
+          }
         }, 4000);
       }, delay);
     };
@@ -177,7 +188,7 @@ const Index = () => {
               Protocolo Elevação Mental
             </p>
             <h1 className="text-balance text-2xl font-bold tracking-tight md:text-3xl">
-              Eleve sua mente, blinde seu foco e alcance produtividade máxima.
+              Você pode sim alcançar a sua melhor versão.
             </h1>
             <p className="text-balance text-sm text-muted-foreground md:text-base">
               Assista ao vídeo abaixo e descubra o método simples para destravar sua mente, eliminar a
@@ -243,7 +254,9 @@ const Index = () => {
         {/* Social proof toast */}
         <div
           className={`pointer-events-none fixed left-1/2 top-4 z-40 w-[90%] max-w-xs -translate-x-1/2 transform transition-all duration-300 md:left-4 md:top-auto md:bottom-4 md:max-w-sm md:translate-x-0 ${
-            toastVisible ? "opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-4 md:-translate-x-full"
+            toastVisible
+              ? "opacity-100 translate-y-0 md:translate-x-0"
+              : "opacity-0 -translate-y-4 md:-translate-x-full"
           }`}
         >
           <div className="pointer-events-auto flex items-center gap-3 rounded-lg bg-primary px-4 py-3 text-xs text-primary-foreground shadow-lg">
