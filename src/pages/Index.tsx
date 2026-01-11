@@ -29,24 +29,24 @@
 
   3) VTurb Performance (adicionar no <head> de index.html):
 
-     <script>
-       !function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);
-     </script>
-     <link
-       rel="preload"
-       href="https://scripts.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/players/69611603d57dbf78326af255/v4/player.js"
-       as="script"
-     />
-     <link
-       rel="preload"
-       href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
-       as="script"
-     />
-     <link
-       rel="preload"
-       href="https://cdn.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/696115398990e4119b4e389e/main.m3u8"
-       as="fetch"
-     />
+      <script>
+        !function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);
+      </script>
+      <link
+        rel="preload"
+        href="https://scripts.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/players/69642f3d93850164e9ff97e3/v4/player.js"
+        as="script"
+      />
+      <link
+        rel="preload"
+        href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
+        as="script"
+      />
+      <link
+        rel="preload"
+        href="https://cdn.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/69642e7fbabb3c8368116160/main.m3u8"
+        as="fetch"
+      />
      <link rel="dns-prefetch" href="https://cdn.converteai.net" />
      <link rel="dns-prefetch" href="https://scripts.converteai.net" />
      <link rel="dns-prefetch" href="https://images.converteai.net" />
@@ -141,7 +141,7 @@ const Index = () => {
       return;
     }
 
-    const DELAY_MS = 579000; // 9 minutos e 39 segundos
+    const DELAY_MS = 498000; // 8 minutos e 18 segundos
     const timerId = window.setTimeout(() => {
       setShowOffer(true);
     }, DELAY_MS);

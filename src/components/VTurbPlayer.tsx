@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 
-const VTURB_SCRIPT_ID = "vturb-player-script-69611603d57dbf78326af255";
+const VTURB_SCRIPT_ID = "vturb-player-script-69642f3d93850164e9ff97e3";
 const VTURB_SCRIPT_SRC =
-  "https://scripts.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/players/69611603d57dbf78326af255/v4/player.js";
+  "https://scripts.converteai.net/930d9485-c45e-4f04-a322-39acad49f75c/players/69642f3d93850164e9ff97e3/v4/player.js";
 
 declare global {
   namespace JSX {
@@ -32,7 +32,7 @@ export const VTurbPlayer = () => {
     <div className="w-full max-w-md mx-auto">
       {/* VTurb smartplayer element rendered directly so the external script can hydrate it */}
       <vturb-smartplayer
-        id="vid-69611603d57dbf78326af255"
+        id="vid-69642f3d93850164e9ff97e3"
         style={{ display: "block", margin: "0 auto", width: "100%", maxWidth: 400 }}
       />
     </div>
