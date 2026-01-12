@@ -195,7 +195,7 @@ const Index = () => {
       page: "protocolo_elevacao_mental",
     });
 
-    const hotmartHref = "https://pay.hotmart.com/D103519578K?checkoutMode=2";
+    const hotmartHref = "https://pay.hotmart.com/D103519578K?checkoutMode=10";
 
     // Dispara o widget da Hotmart se o script já tiver inicializado o link
     if (hotmartLinkRef.current) {
@@ -247,7 +247,7 @@ const Index = () => {
               {/* Link oculto da Hotmart para o widget de checkout (não aparece visualmente) */}
               <a
                 ref={hotmartLinkRef}
-                href="https://pay.hotmart.com/D103519578K?checkoutMode=2"
+                href="https://pay.hotmart.com/D103519578K?checkoutMode=10"
                 className="hotmart-fb hotmart__button-checkout"
                 style={{ display: "none" }}
                 aria-hidden="true"
