@@ -81,7 +81,6 @@ const Index = () => {
   const [toastIndex, setToastIndex] = useState(0);
   const [toastVisible, setToastVisible] = useState(false);
   const toastIndexRef = useRef(0);
-  const hotmartLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const debugMode = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -112,27 +111,6 @@ const Index = () => {
     };
   }, []);
 
-  // Lógica da oferta atrasada
-  useEffect(() => {
-    // Import Hotmart checkout script e CSS
-    const HOTMART_SCRIPT_SRC = "https://static.hotmart.com/checkout/widget.min.js";
-    const HOTMART_CSS_HREF = "https://static.hotmart.com/css/hotmart-fb.min.css";
-
-    if (!document.querySelector(`script[src="${HOTMART_SCRIPT_SRC}"]`)) {
-      const script = document.createElement("script");
-      script.src = HOTMART_SCRIPT_SRC;
-      script.async = true;
-      document.head.appendChild(script);
-    }
-
-    if (!document.querySelector(`link[href="${HOTMART_CSS_HREF}"]`)) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.type = "text/css";
-      link.href = HOTMART_CSS_HREF;
-      document.head.appendChild(link);
-    }
-  }, []);
 
   // Oferta atrasada (timer)
   useEffect(() => {
@@ -195,15 +173,8 @@ const Index = () => {
       page: "protocolo_elevacao_mental",
     });
 
-    const hotmartHref = "https://pay.hotmart.com/D103519578K?checkoutMode=10";
-
-    // Dispara o widget da Hotmart se o script já tiver inicializado o link
-    if (hotmartLinkRef.current) {
-      hotmartLinkRef.current.click();
-    } else {
-      // Fallback para abrir o checkout diretamente
-      window.open(hotmartHref, "_blank");
-    }
+    // Redireciona diretamente para a página de pagamentos
+    window.location.href = "https://pay.hotmart.com/D103519578K?checkoutMode=10";
   };
 
   const currentToastMessage = SOCIAL_PROOF_MESSAGES[toastIndex];
@@ -244,17 +215,6 @@ const Index = () => {
           {/* Oferta atrasada */}
           {showOffer ? (
             <section className="mt-4 w-full max-w-xl space-y-4 rounded-xl border bg-card p-4 text-center shadow-sm">
-              {/* Link oculto da Hotmart para o widget de checkout (não aparece visualmente) */}
-              <a
-                ref={hotmartLinkRef}
-                href="https://pay.hotmart.com/D103519578K?checkoutMode=10"
-                className="hotmart-fb hotmart__button-checkout"
-                style={{ display: "none" }}
-                aria-hidden="true"
-                tabIndex={-1}
-              >
-                Checkout Hotmart
-              </a>
               <h2 className="text-lg font-semibold tracking-tight md:text-xl">
                 Sua Mente Blindada e Produtividade Máxima.
               </h2>
