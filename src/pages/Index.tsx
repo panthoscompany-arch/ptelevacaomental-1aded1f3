@@ -173,8 +173,7 @@ const Index = () => {
       page: "protocolo_elevacao_mental",
     });
 
-    // Redireciona diretamente para a página de pagamentos
-    window.location.href = "https://pay.hotmart.com/D103519578K?checkoutMode=10";
+    // Navegação é feita diretamente pelo link do botão (anchor)
   };
 
   const currentToastMessage = SOCIAL_PROOF_MESSAGES[toastIndex];
@@ -225,11 +224,14 @@ const Index = () => {
 
               <div className="space-y-3">
                 <Button
+                  asChild
                   size="lg"
                   className="w-full animate-pulse text-base font-semibold md:text-lg"
                   onClick={handleCtaClick}
                 >
-                  Quero conhecer meu novo eu
+                  <a href="https://pay.hotmart.com/D103519578K?checkoutMode=10">
+                    Quero conhecer meu novo eu
+                  </a>
                 </Button>
 
                 <div className="flex flex-col items-center justify-center gap-2 text-xs text-muted-foreground md:flex-row md:text-[0.7rem]">
