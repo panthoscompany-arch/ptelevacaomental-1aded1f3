@@ -165,12 +165,23 @@ const Index = () => {
   }, []);
 
   const handleCtaClick = () => {
-    // Disparo de evento para Google Tag Manager
+    // Disparo de evento para Google Tag Manager - clique no CTA
     (window as any).dataLayer = (window as any).dataLayer || [];
+
+    // Evento de clique no CTA (já usado nas análises atuais)
     (window as any).dataLayer.push({
       event: "cta_click",
       cta_label: "QUERO CONHECER MEU NOVO EU",
       page: "protocolo_elevacao_mental",
+    });
+
+    // Evento de início de checkout (personalizado)
+    (window as any).dataLayer.push({
+      event: "begin_checkout",
+      cta_label: "QUERO CONHECER MEU NOVO EU",
+      page: "protocolo_elevacao_mental",
+      checkout_provider: "hotmart",
+      checkout_url: "https://pay.hotmart.com/D103519578K?checkoutMode=10",
     });
 
     // Navegação é feita diretamente pelo link do botão (anchor)
